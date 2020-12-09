@@ -1,0 +1,49 @@
+<div id="mySidenav" class="sidenav" >
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <div class="sidenav-content">        
+        <a routerLink="/home/truck-driver-mapping" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">Truck Driver Mapping</a>
+        <a routerLink="/home/truck-management" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+            true}"(click)="closeNav()">Truck Registration</a>
+        <a routerLink="/home/driver-master" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">Driver Registration</a>
+            <a routerLink="/home/driver-master" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                true}" (click)="closeNav()">User Registration</a>
+        <a routerLink="/home/in-survey/truck-transaction-mapping" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">In Survey</a>
+        <a routerLink="" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">Out Survey</a>
+        <a routerLink="/home/in-gate" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">In Gate</a>
+         <a routerLink="/home/out-gate" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">Out Gate</a>
+            <a routerLink="" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">Yard Management</a>
+            <a routerLink="" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">Admin</a>
+            <a routerLink="/home/damage-inspection-management-system" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">Damage Inspection Management System</a>
+        
+        <!-- <a routerLink="/home/transaction-summary-page" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:
+            true}" (click)="closeNav()">transaction summary </a>     -->
+    </div>
+</div>
+<!-- <app-sidebar></app-sidebar> -->
+<app-navbar id="appNavbar"></app-navbar>
+<span id="openNav" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+<div id="main" style="height: calc(100% - 69px);"  >
+    <div class="container-fluid mb-5"  >
+        <!-- <span id = "openNav" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span> -->
+        <router-outlet></router-outlet>
+    </div>
+    <!-- <app-footer id="appFooter"></app-footer> -->
+</div>
+

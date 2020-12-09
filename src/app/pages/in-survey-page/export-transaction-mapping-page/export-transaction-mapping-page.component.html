@@ -1,0 +1,269 @@
+<div class="container">
+  <h1 class="col-12 page-heading">Export Transaction Mapping</h1>
+  <div class="row justify-content-center">
+    <!-- #formControl="ngForm" -->
+    <!-- [formGroup]="ImportFormGroup" -->
+    <form
+      [formGroup]="exportFormGroup"
+      
+      class="col-10"
+      #formControl="ngForm"
+    >
+      <div class="form-group row">
+        <div class="col-6 containerLabel">No. of Containers</div>
+        <div class="form-check col-3 text-center">
+          <label class="form-check-label">
+            <input
+              type="radio"
+              name="containerCountRadioBtn"
+              formControlName="containerCountRadioBtn"
+              class="form-check-input"
+              (change)="containerCountRadioBtnChangedEvent()"
+              [value]="1"
+            />1
+          </label>
+        </div>
+        <div class="form-check col-3 ">
+          <label class="form-check-label">
+            <input
+              type="radio"
+              name="containerCountRadioBtn"
+              formControlName="containerCountRadioBtn"
+              class="form-check-input"
+              (change)="containerCountRadioBtnChangedEvent()"
+              [value]="2"
+            />2
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6"  >
+          <div class="form-group row">
+            <div class="col-10  position-relative">
+              <label for="pin1">PIN 1:</label>
+              <input
+                type="text"
+                autocomplete="off"
+                class="form-control"
+                id="pin1"
+                formControlName="pin1"
+                (blur)="onPin1LostFocus()"
+                (input)="onPin1TextChanged()"
+                placeholder="Enter PIN 1"
+                name="pin1"
+              />
+              <div class=" position-absolute" style="top:15px; right: 30px;" data-toggle="tooltip" >
+                <br>
+                <fa-icon id="pin1Icon" name="pin1Icon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+
+            </div>
+            <!-- <span class="faIcon">
+              <fa-icon
+                id="pin1Icon"
+                name="pin1Icon"
+                style="color: red"
+                size="lg"
+                [icon]="['fas', 'exclamation-circle']"
+              >
+              </fa-icon>
+            </span> -->
+
+            <!-- <div class="col-2">
+              <br>
+              <fa-icon id="pin1Icon" name="pin1Icon" style="color: red" size="lg" [icon]="['fas', 'exclamation-circle']">
+              </fa-icon>
+            </div> -->
+          </div>
+          <div class="form-group row">
+            <div class="col-10  position-relative">
+              <label for="containerNo1">Container 1:</label>
+              <input
+                type="text"
+                class="form-control"
+                autocomplete="off"
+                id="containerNo1"
+                formControlName="containerNo1"
+                (blur)="onContainerNo1LostFocus()"
+                (input)="onContainerNo1TextChanged()"
+                placeholder="Enter Container No 1"
+                name="containerNo1"
+              />
+              <div class=" position-absolute" style="top:15px; right: 30px;" data-toggle="tooltip" >
+                <br>
+                <fa-icon id="containerNo1Icon" name="containerNo1Icon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+
+            </div>
+            <!-- <span class="faIcon">
+              <span
+                ><i
+                  class="fa fa-check"
+                  *ngIf="validationIcon"
+                  aria-hidden="true"
+                ></i
+              ></span>
+              <div
+                class="spinner-grow text-dark"
+                *ngIf="validationSpinner"
+              ></div>
+              <fa-icon
+                id="containerNo1Icon"
+                name="containerNo1Icon"
+                style="color: red"
+                size="lg"
+                [icon]="['fas', 'exclamation-circle']"
+              >
+              </fa-icon>
+            </span> -->
+            <!-- <div class="col-2">
+              <br>
+              <fa-icon id="containerNo1Icon" name="containerNo1Icon" style="color: red" size="lg"
+                [icon]="['fas', 'exclamation-circle']">
+              </fa-icon>
+            </div> -->
+          </div>
+          <div class="form-group ">
+            <div class="col-10 text-center my-4">
+              <!-- <button type="button" [disabled]="(exportFormControls.pin1.errors || exportFormControls.containerNo1.errors) "
+              id="btnCaptureImageForContainer1" style="width: 9em; background-color: red;" class="btn btn-raised btn-info captureImageButton"
+              (click)="redirectToCaptureImagePage()">Capture Images</button> -->
+              <button
+                type="button"
+                [disabled]="!captureImageButton1"
+                id="btnCaptureImageForContainer1"
+                style="width: 10em;"
+                class="btn btn-raised btn-info font-weight-bolder captureImageButton"
+                (click)="redirectToCaptureImage1Page()"
+              >
+                Capture Images
+              </button>
+              <!-- in-survey/images-capture -->
+            </div>
+          </div>
+        </div>
+        <div class="col-6"  >
+          <div class="form-group row">
+            <div class="col-10  position-relative">
+              <label for="pin2">PIN 2:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="pin2"
+                autocomplete="off"
+                formControlName="pin2"
+                (blur)="onPin2LostFocus()"
+                (input)="onPin2TextChanged()"
+                placeholder="Enter PIN 2"
+                name="pin2"
+              />
+
+              <div class=" position-absolute" style="top:15px; right: 30px;" data-toggle="tooltip" >
+                <br>
+                <fa-icon id="pin2Icon" name="pin2Icon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+
+
+            </div>
+            <!-- <span class="faIcon">
+              <fa-icon
+                id="pin2Icon"
+                name="pin2Icon"
+                style="color: red"
+                size="lg"
+                [icon]="['fas', 'exclamation-circle']"
+              >
+              </fa-icon>
+            </span> -->
+            <!-- <div class="col-2">
+              <br>
+              <fa-icon id="pin2Icon" name="pin2Icon" style="color: red" size="lg" [icon]="['fas', 'exclamation-circle']">
+              </fa-icon>
+            </div> -->
+          </div>
+          <div class="form-group row">
+            <div class="col-10  position-relative">
+              <label for="pin2">Container 2:</label>
+              <input
+                type="text"
+                class="form-control"
+                autocomplete="off"
+                id="containerNo2"
+                formControlName="containerNo2"
+                (blur)="onContainerNo2LostFocus()"
+                (input)="onContainerNo2TextChanged()"
+                placeholder="Enter Container No 2"
+                name="containerNo2"
+              />
+              <div class=" position-absolute" style="top:15px; right: 30px;" data-toggle="tooltip" >
+                <br>
+                <fa-icon id="containerNo2Icon" name="containerNo2Icon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+
+            </div>
+            <!-- <span class="faIcon">
+              <span
+                ><i
+                  class="fa fa-check"
+                  *ngIf="validationIcon2"
+                  aria-hidden="true"
+                ></i
+              ></span>
+              <fa-icon
+                id="containerNo2Icon"
+                name="containerNo2Icon"
+                style="color: red"
+                size="lg"
+                [icon]="['fas', 'exclamation-circle']"
+              >
+              </fa-icon>
+            </span> -->
+            <!-- <div class="col-2">
+              <br>
+              <fa-icon id="containerNo2Icon" name="containerNo2Icon" style="color: red" size="lg"
+                [icon]="['fas', 'exclamation-circle']">
+              </fa-icon>
+            </div> -->
+          </div>
+          <!-- [disabled]="exportFormControls.pin2.errors || exportFormControls.containerNo2.errors" -->
+          <div class="form-group " style="justify-content: center">
+            <div class="col-10 text-center my-4">
+              <button
+                type="button "
+                [disabled]="
+                  exportFormControls.pin2.errors ||
+                  exportFormControls.containerNo2.errors ||
+                  exportFormControls.containerCountRadioBtn.value == 1
+                "
+                id="btnCaptureImageForContainer2"
+                style="width: 10em;"
+                class="btn btn-raised btn-info font-weight-bolder captureImageButton"
+                (click)="redirectToCaptureImage2Page()"
+              >
+                Capture Images
+              </button>
+            </div>
+            <!--    [disabled]="exportFormControls.pin2.errors || exportFormControls.containerNo2.errors && exportFormControls.pin2.value== null ||  exportFormControls.containerNo2.value== null " -->
+
+            <!-- exportFormControls.pin2.errors && exportFormControls.containerNo2.errors -->
+          </div>
+        </div>
+      </div>
+      <div >
+        <button
+          [disabled]="!disableBUtton"
+          type="button"
+          class="btn btn-raised submitButton btn-success font-weight-bolder"
+          (click)="onExportTransactionSubmit()"
+          style="font-size: 1.1rem;  border-radius: 10px; transform: translateX(190%);"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

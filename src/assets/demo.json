@@ -1,0 +1,36 @@
+{
+    "damageImageDtos": [
+      {
+        "comment": "Top",
+        "positionName": "TOP",
+        "damageDtos": [
+          {
+            "id": 1,
+            "name": "",
+            "damage": true
+          },         
+          {
+            "id": 4,
+            "name": "",
+            "damage": true
+          }        
+        ]
+      },
+      {
+        "comment": "back commenst",
+        "positionName": "BACK",
+        "damageDtos": [         
+          {
+            "id": 9,
+            "name": "",
+            "damage": true
+          },
+          {
+            "id": 10,
+            "name": "",
+            "damage": true
+          }
+        ]
+      }
+    ]
+}

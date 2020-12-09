@@ -1,0 +1,111 @@
+<div class="container-fulid">
+  <form [formGroup]="damageInspectionFormGroup">
+    <div class="row">
+      <div
+        class="col-4 mt-3"
+        *ngFor="let mainObjectList of damageImageObjectList; let i = index"
+      >
+        <div class="row shadow mr-1 bg-white rounded" style="width: 100%">
+          <div class="col-lg-12 d-block ab">
+            <a>
+              <img
+                class="img-fluid hover-shadow cursor pt-3"
+                id="{{ i + 1 }}"
+                data-toggle="modal"
+                data-target="#myModal"
+                src="{{
+                  'data:image/jpg;base64,' + mainObjectList.imageByteArray
+                }}"
+                alt=""
+              />
+              <!-- (click)=" onclickImagePopup()" (click)="open(i)"  -->
+            </a>
+            <div
+              id="myModal"
+              class="modal fade fade bd-example-modal-lg"
+              role="dialog"
+            >
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      data-dismiss="modal"
+                      class="close"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <img
+                      class="showimage img-responsive"
+                      style="width: 100%"
+                      src=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 style="text-align: center">
+              {{ mainObjectList.positionName }}
+            </h4>
+          </div>
+          <hr />
+          <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+            <div class="form-group mt-3">
+              <textarea
+                class="form-control rounded-2 pl-1 pr-0"
+                placeholder="comment..."
+                rows="3"
+                formControlName="damageCommentBox"
+                (change)="
+                  commentBoxChange($event.target.value, mainObjectList, i)
+                "
+              >
+              </textarea>
+            </div>
+          </div>
+          <div
+            class="col-lg-8 col-md-8 col-sm-8 col-12 checkboxFont mt-3"
+            style="text-align: center"
+          >
+            <label
+              class="checkbox-inline"
+              *ngFor="
+                let checkboxList of mainObjectList.damageDtos;
+                let j = index
+              "
+            >
+              <input
+                type="checkbox"
+                class="mr-1 ml-1"
+                [checked]="checkboxList.damage"
+                (change)="onChange($event.target.checked, checkboxList, i, j)"
+              />{{ checkboxList.name }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="row mt-5" style="justify-content: center">
+    <button
+      [disabled]="!damageInspectionFormGroup.valid"
+      type="button"
+      style="width: 10em"
+      class="btn btn-raised btn-primary"
+      (click)="onClickSubmit()"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      style="width: 10em"
+      class="btn btn-raised btn-primary ml-3"
+      routerLink="/home/in-gate"
+    >
+      Back
+    </button>
+  </div>
+</div>

@@ -1,0 +1,121 @@
+{
+  "damageImageDtos": [
+    {
+     
+      "comment": "",
+      "positionName": "TOP",
+      "damageDtos": [
+        {
+          "id": 1,
+          "name": "Scratch",
+          "damage": false
+        },
+        {
+          "id": 2,
+          "name": "Dent",
+          "damage": false
+        },
+        {
+          "id": 3,
+          "name": "Rust",
+          "damage": false
+        },
+        {
+          "id": 4,
+          "name": "PUSH IN",
+          "damage": false
+        },
+        {
+          "id": 5,
+          "name": "PUSH OUT",
+          "damage": false
+        },
+        {
+          "id": 6,
+          "name": "Cut",
+          "damage": false
+        },
+        {
+          "id": 7,
+          "name": "Bent",
+          "damage": false
+        },
+        {
+          "id": 8,
+          "name": "Broken",
+          "damage": false
+        },
+        {
+          "id": 9,
+          "name": "Missing",
+          "damage": false
+        },
+        {
+          "id": 10,
+          "name": "Cracked",
+          "damage": false
+        }
+      ]
+    },
+    {
+      
+      "comment": "",
+      "positionName": "BACK",
+      "damageDtos": [
+        {
+          "id": 1,
+          "name": "Scratch",
+          "damage": false
+        },
+        {
+          "id": 2,
+          "name": "Dent",
+          "damage": false
+        },
+        {
+          "id": 3,
+          "name": "Rust",
+          "damage": false
+        },
+        {
+          "id": 4,
+          "name": "PUSH IN",
+          "damage": false
+        },
+        {
+          "id": 5,
+          "name": "PUSH OUT",
+          "damage": false
+        },
+        {
+          "id": 6,
+          "name": "Cut",
+          "damage": false
+        },
+        {
+          "id": 7,
+          "name": "Bent",
+          "damage": false
+        },
+        {
+          "id": 8,
+          "name": "Broken",
+          "damage": false
+        },
+        {
+          "id": 9,
+          "name": "Missing",
+          "damage": false
+        },
+        {
+          "id": 10,
+          "name": "Cracked",
+          "damage": false
+        }
+      ]
+    }
+  ],
+  "status": "OK",
+  "message": "Damage list fetched",
+  "error": false
+}

@@ -1,0 +1,10 @@
+<div *ngFor = "let checkboxDto of checkboxList; let i = index">
+  <input class="form-check-input" type="checkbox" [checked]="checkboxDto.isSelected" id="{{i}}"
+    (change)="onChange($event.target.checked,checkboxDto, i)" >
+  <!-- [(ngModel)]="cat.id" name="{{ cat.name }}" type="checkbox" id="{{cat.name}}" -->
+  <!-- (change)="onChangeCategory($event, cat)" -->
+  <label class="form-check-label" for="{{i}}">
+    {{checkboxDto.name}}
+  </label>
+</div>
+<button>Submit</button>

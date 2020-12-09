@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.min.css';
+@import './assets/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css';
+$enable-responsive-font-sizes: true;
+
+
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+// .tooltip {
+//     transform: translate3d(673px, 254px, 0px) !important;
+//     top: 0px;
+//     left: 0px;
+//     will-change: transform;
+// }
+

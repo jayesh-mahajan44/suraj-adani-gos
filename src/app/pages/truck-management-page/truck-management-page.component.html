@@ -1,0 +1,107 @@
+<table id="example" class="table table-striped table-bordered" data-page-length="5" cellspacing="0" style="width:100%">
+  <thead>
+      <tr>
+          <th class="th-sm">ID</th>
+          <th class="th-sm">Registration No</th>
+          <th class="th-sm">Bat No</th>
+          <th class="th-sm">RFID Tag</th>
+          <th class="th-sm">Status</th>
+          <th class="th-sm"></th>
+          <th class="th-sm"></th>
+      </tr>
+  </thead>
+</table>
+<div class="text-right">
+  <button class="btn btn-raised btn-primary" (click)="onNew();deleteValidation()">Register New Truck</button>
+</div>
+<br>
+<div class="regentry" *ngIf="showNew" i= 'validation' >
+  <form [formGroup]="truckDetailsFormGroup" style="margin: 0 auto; width:50%;" #formControl="ngForm">
+    <div class="form-group row"  >
+      <label style="text-align: right" for="registrationNumber" class="col-4 col-form-label">Registration No</label>
+      <div class="col-5 position-relative">
+        <input class="form-control" id="registration"  [(ngModel)]="truckModel.registrationNumber" formControlName="registrationNumber" type="text"
+            (blur)="onRegistraionNoLostFocus()" (input)="onRegistraionNoTextChanged()" name="registration"  >
+          <div class=" position-absolute" style="top:-18px; right: 30px;" *ngIf="f.registrationNumber.invalid && (f.registrationNumber.dirty || f.registrationNumber.touched)"     >
+            <br>
+            <fa-icon id="registrationNumberIcon" name="registrationNumberIcon" style="color: red" size="lg"
+              [icon]="['fas', 'exclamation-circle']"></fa-icon>
+          </div>
+        </div>
+      <!-- <div class="col-4"
+        *ngIf="f.registrationNumber.invalid && (f.registrationNumber.dirty || f.registrationNumber.touched)">
+        <label style ="font-size: 0.7em; color: red" *ngIf="f.registrationNumber.errors">
+          <div *ngIf="f.registrationNumber.errors.required">
+            Registration No. is required
+          </div>
+          <div *ngIf="f.registrationNumber.errors.pattern">
+            Registration No. is invalid
+          </div>
+        </label>
+      </div> -->
+    </div>
+
+    <div class="form-group row">
+      <label style="text-align: right" class="col-4 col-form-label">Bat No</label>
+      <div class="col-5  position-relative">
+        <input class="form-control" id="batNo" formControlName="batNo" type="text" (blur)="onBatNoLostFocus()"
+          (input)="onBatNoTextChanged($event.target.value)" [(ngModel)]="truckModel.batNo" name="batNo"  />
+          <div class=" position-absolute" style="top:-18px; right: 30px; "  *ngIf="f.batNo.invalid && (f.batNo.dirty || f.batNo.touched)" >
+            <br>
+            <fa-icon id="batNoIcon" name="batNoIcon" style="color: red;" size="lg"
+              [icon]="['fas', 'exclamation-circle']"></fa-icon>
+          </div>
+        </div>
+      <!-- <div class="col-4" *ngIf="f.batNo.invalid && (f.batNo.dirty || f.batNo.touched)">
+        <label style ="font-size: 0.7em; color: red" *ngIf="f.batNo.errors">
+          <div *ngIf="f.batNo.errors.pattern">
+            Bat No. is invalid
+          </div>
+        </label>
+      </div> -->
+    </div>
+
+
+    <div class="form-group row">
+      <label style="text-align: right" class="col-4 col-form-label">RFID Tag</label>
+      <div class="col-5 position-relative">
+        <input class="form-control" id="rfidTagId" formControlName="rfidTagId" type="text"
+        (blur)="onRfidTagIdLostFocus()"  (input)="onRfidTagIdTextChanged($event.target.value)"  style="display: block !important ;" >
+          <div class=" position-absolute" style="top:-18px; right: 30px; "  *ngIf="f.rfidTagId.invalid && (f.rfidTagId.dirty || f.rfidTagId.touched)"  >
+            <br>
+            <fa-icon id="rfidIcon" name="rfidIcon" style="color: red" size="lg"
+              [icon]="['fas', 'exclamation-circle']"></fa-icon>
+          </div>
+      
+        </div>
+      <!-- <div class="col-4" *ngIf="f.rfidTagId.invalid && (f.rfidTagId.dirty || f.rfidTagId.touched)">
+        <label style ="font-size: 0.7em; color: red" *ngIf="f.rfidTagId.errors">
+          <div *ngIf="f.rfidTagId.errors.pattern">
+            RFID Tag is invalid
+          </div>
+        </label>
+      </div> -->
+      
+
+    </div>
+
+    <div class="form-group row">
+      <label style="text-align: right" for="truckStatusDropDown" class="col-4 col-form-label">Status</label>
+      <div class="col-5">
+        <select class="form-control"  formControlName="truckStatusDropDown"
+          [(ngModel)]="truckModel.status">
+          <option value="Active">Active</option>
+          <option value="InActive">InActive</option>
+          <option value="BlackListed">BlackListed</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row" style="margin-left: 40%">
+      <button type="submit" class="btn btn-raised btn-primary" [disabled]="!truckDetailsFormGroup.valid"
+        (click)="onSave()">{{submitType}}</button>
+      &nbsp; &nbsp;
+      <button class="btn btn-raised btn-danger" (click)="onCancel();deleteValidation()"  >Cancel</button>
+    </div>
+
+  </form>
+</div>

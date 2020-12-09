@@ -1,0 +1,6 @@
+@import "../../../../assets/styles/rfs.scss";
+
+.page-heading {
+    @include font-size(2.5rem);
+    text-align: center;
+}

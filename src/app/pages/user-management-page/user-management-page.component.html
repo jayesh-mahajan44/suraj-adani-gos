@@ -1,0 +1,55 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#dd8f44" type="line-scale-pulse-out-rapid">
+</ngx-spinner>
+<table id="dtBasicExample" data-page-length="10"  cellspacing="0" class="row-border hover order-column"
+  width="100%">
+  <thead>
+    <tr>
+        <th></th>
+      <th class="th-sm">Username
+      </th>
+
+      <th class="th-sm">
+      </th>
+      <th class="th-sm">
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr [attr.id]=user.userId *ngFor="let user of userList; let i = index">
+      <td></td>
+      <td>{{ user.username }}</td>
+      <td>
+        <button type="button"  (click)="onEdit(i)">Edit</button>
+      </td>
+      <td>
+        <button type="button" (click)="onDelete(i, user.userId)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="text-right">
+  <button type="submit" (click)="onNew()">Add New User</button>
+</div>
+<br>
+<div class="regentry" *ngIf="showNew">
+  <form (ngSubmit)="onSave()">
+
+    <div class="form-group row">
+      <label for="username-input" class="col-2 col-form-label">Username</label>
+      <div class="col-10">
+        <input class="form-control" type="text" [(ngModel)]="userModel.username" name="username">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="example-password-input" class="col-2 col-form-label">Password</label>
+      <div class="col-10">
+        <input class="form-control" type="password" [(ngModel)]="userModel.password" name="password">
+      </div>
+    </div>
+    <button type="submit">{{submitType}}</button>
+    <button type="submit" (click)="onCancel()">Cancel</button>
+  </form>
+</div>

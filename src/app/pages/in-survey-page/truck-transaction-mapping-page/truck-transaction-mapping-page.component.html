@@ -1,0 +1,109 @@
+<div class="container col-6">
+  <h1 class="col-12 page-heading">
+    Truck Transaction Mapping 
+  </h1>
+  <!-- <button data-toggle="tooltip" title="Hooray!">Hover over me</button> -->
+  <!-- glyphicon glyphicon-exclamation-sign -->
+  <!-- <span style="color:red" class="fa-music"></span> -->
+  <br>
+  <div class="row justify-content-center">
+    <form [formGroup]="truckFormGroup" class="col-12" #formControl="ngForm">
+      <div class="form-group row justify-content-center">
+        <div class="col-10 position-relative">
+          <label for="truckNo">Truck No:</label>
+          <input type="text" autocomplete="off" (blur)="onTruckNoLostFocus()" (input)="onTruckNoTextChanged($event.target.value)"
+            class="form-control" id="truckNo" formControlName="truckNo" placeholder="Enter Truck No" name="truckNo">
+            <div class="position-absolute" style="top:15px; right: 30px;">
+              <!-- *ngIf="f.truckNo.invalid && (f.truckNo.dirty || f.truckNo.touched)" -->
+              <br>
+              <fa-icon id="truckNoIcon" name="truckNoIcon" style="color: red" size="lg"
+                [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              <!-- data-toggle="tooltip" -->
+              <!-- title={{truckNoTooltip}} -->
+              <!-- *ngIf="f.truckNo.errors.required" -->
+              <!-- <fa-icon id="truckNoPatternError" name="truckNoPatternError" *ngIf="f.truckNo.errors.pattern"
+                data-toggle="tooltip" title="Invalid Truck No" style="color: red" size="lg"
+                [icon]="['fas', 'exclamation-circle']"></fa-icon> -->
+            </div>
+        
+          </div>
+       
+      </div>
+      <div class="form-group row justify-content-center">
+        <div class="col-10 position-relative">
+          <label for="batNo">Bat No:</label>
+          <input type="text" autocomplete="off" (blur)="onBatNoLostFocus()" (input)="onBatNoTextChanged($event.target.value)"
+            class="form-control" id="batNo" formControlName="batNo" placeholder="Enter Bat No" name="batNo">
+    
+            <div class="position-absolute" style="top:15px; right: 30px;">
+              <!-- *ngIf="f.batNo.invalid && (f.batNo.dirty || f.batNo.touched)" -->
+              <br>
+              <!-- <div *ngIf="f.batNo.errors.required"> -->
+              <fa-icon id="batNoIcon" name="batNoIcon" style="color: red" size="lg" [icon]="['fas', 'exclamation-circle']">
+              </fa-icon>
+              <!-- data-toggle="tooltip" -->
+              <!-- title={{batNoTooltip}} -->
+              <!-- </div> -->
+              <!-- <div *ngIf="f.batNo.errors.pattern">
+                <fa-icon data-toggle="tooltip" title="Invalid Bat No" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']">
+                </fa-icon>
+              </div> -->
+            </div>
+    
+          </div>
+       
+      </div>
+      <div class="form-group row justify-content-center ">
+        <div class="col-10" >
+          <label for ="checkboxes">Select type of transaction</label>
+          <div class="row " id = "checkboxes">
+              <!-- style="justify-content:center" -->
+            <label class="checkbox-inline col-4 align-items-center d-flex" style="font-size: 1rem">
+              <input class="mr-2" type="checkbox" name = "importTransactionCheckbox" formControlName="importTransactionCheckbox" value="">Import</label>
+            <label class="checkbox-inline col-4 align-items-center d-flex" style="font-size: 1rem">
+              <input class="mr-2" type="checkbox" name = "exportTransactionCheckbox" formControlName="exportTransactionCheckbox" value="">Export</label>
+          </div>
+        </div>
+        
+      </div>
+    
+      <br>
+      <div class="form-group row justify-content-center" >
+        <div class="col-10 d-flex justify-content-center" >
+          <button [disabled]="!truckFormGroup.valid" (click)="OnSubmitButtonClick()" class="btn btn-raised btn-primary px-5 font-weight-bold rounded">Submit</button>
+
+        </div>
+        <!-- <div class="col-6"> -->
+        <!-- <button class="ml-2 mr-2 btn btn-raised btn-info">Read Tag</button> -->
+        <!-- </div> -->
+        <!-- <div class="col-6"> -->
+        <!-- </div> -->
+      </div>
+    </form>
+  </div>
+
+
+</div>
+
+<!-- style ="border:solid thick black" -->
+<!-- <ul class="nav nav-tabs">
+    <li class="col-3 active"><a href="#">Truck Transaction Mapping</a></li>
+    <li class="col-3"><a href="#">Export Transaction Mapping</a></li>
+    <li class="col-3"><a href="#">Import Transaction Mapping</a></li>
+    <li class="col-3"><a href="#">Summary</a></li>
+  </ul> -->
+<!-- <div class="row">
+    <div class="col" style="border:solid thick black">
+      <label style="height: 10%">Test1</label>
+    </div>
+    <div class="col">
+        <label style="height: 10%">Test2</label>
+    </div>
+    <div class="col">
+        <label style="height: 10%">Test3</label>
+    </div>
+    <div class="col">
+        <label style="height: 10%">Test4</label>
+    </div>
+  </div> -->

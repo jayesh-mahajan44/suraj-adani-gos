@@ -1,0 +1,118 @@
+<div class="container col-8 py-4" style="border-style: groove; border-width: 1px; border-radius: 10px; border-color: pink; background-color: rgb(255, 255, 255);">
+  <h1 class="col-12 page-heading mb-4">
+    Truck Driver Mapping
+  </h1>
+  <div class="row" style="justify-content: center;align-content: center;">
+    <form [formGroup]="truckDriverFormGroup" class="col-6">
+      <fieldset [disabled]="isTruckValidationSectionToBeDisabled">
+        <div class="form-group row">
+          <div class="col-12 position-relative">
+            <label for="truckNo">Truck No:</label>
+            <input type="text" (blur)="onTruckNoLostFocus()" (input)="onTruckNoTextChanged()" 
+              class="form-control"  formControlName="truckNo" placeholder="Enter Truck No" />
+              <div class=" position-absolute" style="top:15px; right: 30px;" >
+                <br>
+                <fa-icon id="truckNoIcon" name="truckNoIcon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+          </div>
+        
+        </div>
+        <br>
+        <div class="form-group row col-12 mx-0" style="justify-content: center;">
+          <button [disabled]="!truckDriverFormControls.truckNo.valid" style="width: 10em" type="button"
+            class="btn btn-raised btn-info" (click)="validateTruck()" name="btnValidate">Validate Truck
+          </button>
+        </div>
+      </fieldset>
+      <fieldset [disabled]="isDriverLicenseSectionToBeDisabled">
+        <div class="form-group row">
+          <div class="position-relative col-12">
+            <label for="driverLicenseNo">Driver License:</label>
+            <input type="text" (blur)="onDriverLicenseNoLostFocus()" (input)="onDriverLicenseNoTextChanged()"
+              class="form-control" id="driverLicenseNo" formControlName="driverLicenseNo"
+              name="driverLicenseNo" placeholder="Enter Driver License No" />
+
+              <div class=" position-absolute" style="top:15px; right: 30px;" >
+                <br>
+                <fa-icon id="driverLicenseNoIcon" name="driverLicenseNoIcon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']">
+                </fa-icon>
+              </div>
+          </div>
+          
+        </div>
+
+        <br>
+        <div class="form-group row col-12 mx-0" style="justify-content: center;">
+          <button [disabled]="!truckDriverFormControls.driverLicenseNo.valid" style="width: 10em" type="button"
+            class="btn btn-raised btn-primary" (click)="mapTruckAndDriver()"
+            name="btnValidateDriverLicenseAndMap">Submit
+          </button>
+        </div>
+      </fieldset>
+
+    </form>
+  </div>
+
+  <!-- <button type="button" class="btn btn-raised btn-info btn-lg" data-toggle="modal" data-target="#exampleModal">Open
+    Modal</button> -->
+  <div class="modal" id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Mapped Truck Details</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-3 offset-sm-3" style="text-align: right;">
+              Truck No :
+            </div>
+            <div class="col-sm-3">
+              {{truckObject?.registrationNumber}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 offset-sm-2" style=" text-align: right;">
+              Driver Name :
+            </div>
+            <div class="col-sm-4">
+              {{truckObject?.driverName}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 offset-sm-2" style="text-align: right;">
+              Driver License No :
+            </div>
+            <div class="col-sm-4">
+              {{truckObject?.licenseNumber}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5 offset-sm-1" style="text-align: right;">
+              License Validty Date :
+            </div>
+            <div class="col-sm-5">
+              {{truckObject?.licenseValidity}}
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

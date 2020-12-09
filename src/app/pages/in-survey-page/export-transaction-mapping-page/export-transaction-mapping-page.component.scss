@@ -1,0 +1,63 @@
+//@import "../../../../assets/styles/rfs.scss";
+
+.page-heading {
+
+    padding-bottom: 16px;
+   // @include font-size(1.5rem);
+    text-align: center;
+
+}
+
+.faIcon{
+
+    padding-top: 2rem!important;
+}
+
+.submitButton{
+
+    width: 10em;
+}
+
+
+
+@media screen and (max-width: 600px) { // this is the 768px breakpoint
+
+    .captureImageButton{
+
+        font-size: 14px;
+    }
+
+    .submitButton{
+
+            font-size: 14px;
+            width: 6em;
+      
+    }
+
+    .faIcon{
+    
+       padding-left: 5px;
+      font-size: 14px;
+    }
+
+    label{
+        font-size: 14px;
+    }
+    input{
+        font-size: 14px; 
+    }
+    .col-10{
+        padding: 0px;
+    }
+    .page-heading{
+        font-size: 18px;
+    }
+    .containerLabel{
+        font-size: 14px; 
+    }
+
+    input::placeholder {
+        font-size: 12px;
+    }
+    
+}

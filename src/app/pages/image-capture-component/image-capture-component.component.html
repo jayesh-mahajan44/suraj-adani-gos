@@ -1,0 +1,62 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true"><p style="color: white" >Image Loading... </p></ngx-spinner>
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-4 ">
+            <select class=" custom-select"  (change)="ChangingValue($event)">
+                <option></option>
+                <option *ngFor="let captureImageDto of captureImageDtoList ; let i = index;" [value]="captureImageDto.labelName">
+                  {{captureImageDto.label}} : {{captureImageDto.labelName}} </option>
+            </select>
+        </div>
+        <div class="col-sm-4 webCameraStyle">
+            <webcam id="webcam" [height]="400" [width]="500"  [trigger]="triggerObservable"
+                (imageCapture)="handleCapturedImage($event)" [allowCameraSwitch]="allowCameraSwitch" [imageQuality]="5" 
+                (initError)="handleInitError($event)">
+            </webcam>
+        </div>
+        <div class=" col-sm-4 text-center buttonStyle" id="outer">
+            <div class="inner">
+                <button class="btn  btn-responsive btn-raised  btn-info " (click)="triggerSnapshot()" style="width:6em;"
+                type="button">Capture</button>
+                <!-- TODO added button ml-3 and mb-3 -->
+            </div>
+            <div class="inner">
+                <button class="btn btn-responsive btn-primary ml-3"
+                (click)="onSubmit()" [disabled] ="validationButton" >Submit</button>
+                <!--  [disabled] ="validationButton"d-flex captureButtonStyle align-items-center -->
+            </div>
+                
+        </div>
+    </div>
+</div>
+<div class="container captureImagesP">
+    <h4 class="text-center">Capture Images</h4>
+    <div class="row">
+        <div class="col-sm-3 captureImage col-6 " *ngFor="let captureImages of captureImageDtoList;">
+            <div class="thumbnail">
+                <img [src]="captureImages?.imageByteArray"  #myimg data-toggle="modal" data-target="#myModal"
+                    style="width:100%">
+                <div class="caption">
+                    <p>{{captureImages.label}} : {{captureImages.labelName}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="col-12 mt-5 text-center">
+  
+</div> -->
+<div id="myModal" class="modal fade fade bd-example-modal-md" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img class="showimage img-responsive" style="width: 100%;" src="" />
+            </div>
+        </div>
+    </div>
+</div>

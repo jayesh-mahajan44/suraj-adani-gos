@@ -1,0 +1,190 @@
+
+<table id="example" class="table table-striped table-bordered" data-page-length="5" cellspacing="0" style="width:100%">
+  <thead>
+      <tr>
+          <th class="th-sm">ID</th>
+          <th class="th-sm">Driver Name</th>
+          <th class="th-sm">License No</th>
+          <th class="th-sm">Contact No</th>
+          <th class="th-sm">License Validity Date</th>
+          <th class="th-sm"></th>
+          <th class="th-sm"></th>
+      </tr>
+  </thead>
+</table>
+
+<div class="text-right mb-3">
+  <button class="btn btn-raised btn-primary" (click)="onNew()">Register New Driver</button>
+</div>
+<!-- <br> -->
+<div class="regentry" *ngIf="showNew">
+  <form [formGroup]="driverDetailsFormGroup" class="container" style="margin: 0 auto;" #formControl="ngForm">
+  
+  <div class="d-flex ">
+    <div class="col-6 pt-4" >
+    <div class="form-group row">
+      <label style="text-align: right" for="driverName" class="col-4 font-weight-bold col-form-label">Driver Name</label>
+      <div class="col-7  position-relative">
+        <input class="form-control" (blur)="onTruckNoLostFocus()" (input)="onTruckNoTextChanged()" id="driverName" formControlName="driverName" type="text"
+          [(ngModel)]="driverModel.driverName" name="driverName" required>
+
+    
+          <div class=" position-absolute" style="top: -18px; right: 30px;" *ngIf="f.driverName.invalid && (f.driverName.dirty || f.driverName.touched)" >
+            <br>
+            <fa-icon id="driverNameIcon" name="driverNameIcon" style="color: red" size="lg"
+              [icon]="['fas', 'exclamation-circle']"></fa-icon>
+          </div>
+
+      </div>
+      <!-- <div class="col-4" *ngIf="f.driverName.invalid && (f.driverName.dirty || f.driverName.touched)">
+        <label style = "font-size: 0.7em; color: red" *ngIf="f.driverName.errors">
+          <div *ngIf="f.driverName.errors.required">
+            Driver Name is required
+          </div>
+          <div *ngIf="f.driverName.errors.pattern">
+            Driver Name is invalid
+          </div>
+        </label>
+      </div> -->
+    </div>
+
+
+    <div class="form-group row">
+      <label style="text-align: right" for="licenseNumber" class="font-weight-bold col-4 col-form-label">License No.</label>
+      <div class="col-7  position-relative">
+        <input class="form-control" id="licenseNumber" formControlName="licenseNumber" type="text" (blur)="onDriverLicenseNoLostFocus()" (input)="onDriverLicenseNoTextChanged()"
+          [(ngModel)]="driverModel.licenseNumber" required>
+          <div class=" position-absolute" style="top: -18px; right: 30px;"  *ngIf="f.licenseNumber.invalid && (f.licenseNumber.dirty || f.licenseNumber.touched)" >
+            <br>
+            <fa-icon id="licenseNumberIcon" name="licenseNumberIcon" style="color: red" size="lg"
+              [icon]="['fas', 'exclamation-circle']"></fa-icon>
+          </div>
+
+      </div>
+      <!-- <div class="col-4" *ngIf="f.licenseNumber.invalid && (f.licenseNumber.dirty || f.licenseNumber.touched)">
+        <label style ="font-size: 0.7em; color: red" *ngIf="f.licenseNumber.errors">
+          <div *ngIf="f.licenseNumber.errors.required">
+            License No. is required
+          </div>
+          <div *ngIf="f.licenseNumber.errors.pattern">
+            License No. is invalid
+          </div>
+        </label>
+      </div> -->
+    </div>
+
+
+    <div class="form-group row">
+      <label style="text-align: right" for="contactNumber" class="col-4 font-weight-bold col-form-label">Contact No</label>
+      <div class="col-7  position-relative">
+        <input class="form-control" (blur)="onDriverContctNoLostFocus()" (input)="onDriverContctNoTextChanged()" id="contactNumber" formControlName="contactNumber" type="text"
+          [(ngModel)]="driverModel.contactNumber" required>
+          <div class=" position-absolute" style="top: -18px; right: 30px;"  *ngIf="f.contactNumber.invalid && (f.contactNumber.dirty || f.contactNumber.touched)" >
+            <br>
+            <fa-icon id="contactNumberIcon" name="contactNumberIcon" style="color: red" size="lg"
+              [icon]="['fas', 'exclamation-circle']"></fa-icon>
+          </div>
+      </div>
+      <!-- <div class="col-4" *ngIf="f.contactNumber.invalid && (f.contactNumber.dirty || f.contactNumber.touched)">
+        <label style ="font-size: 0.7em; color: red" *ngIf="f.contactNumber.errors">
+          <div *ngIf="f.contactNumber.errors.required">
+            Contact No. is required
+          </div>
+          <div *ngIf="f.contactNumber.errors.pattern">
+            Contact No. is invalid
+          </div>
+        </label>
+      </div> -->
+
+    </div>
+
+    <div class="form-group row">
+      <label style="text-align: right" for="licenseValidityDate" class="col-4 font-weight-bold col-form-label">License Validity</label>
+      <div class="col-7">
+        <input class="form-control" (blur)="onDriverLicenseValadityNoLostFocus()" (input)="onDriverLicenseValadityNoTextChanged()" type="date" id="licenseValidityDate" [(ngModel)]="licenseValidityDateString"
+          formControlName="licenseValidityDate" required>
+          <div class=" position-absolute" style="top: -18px; right: 30px;"  *ngIf="f.licenseValidityDate.invalid && (f.licenseValidityDate.dirty || f.licenseValidityDate.touched)" >
+            <br>
+            <fa-icon id="licenseValidityDateIcon" name="licenseValidityDateIcon" style="color: red" size="lg"
+              [icon]="['fas', 'exclamation-circle']"></fa-icon>
+          </div>
+
+      </div>
+      <!-- <div class="col-4"
+        *ngIf="f.licenseValidityDate.invalid && (f.licenseValidityDate.dirty || f.licenseValidityDate.touched)">
+        <label style ="font-size: 0.7em; color: red" *ngIf="f.licenseValidityDate.errors">
+          <div *ngIf="f.licenseValidityDate.errors.required">
+            License Validity Date is required
+          </div>
+        </label>
+      </div> -->
+
+    </div>
+  </div>
+  <!-- <br> -->
+  <div class="col-6 px-5" >
+    <div class="form-group  mb-2">
+      <label  for="example-password-input" class="col-4 font-weight-bold col-form-label p-0">License Image</label>
+      <!-- <div class="col-12">
+        <img id="photo" *ngIf = "savedDriverLicenseImageURL!=''" [src]="savedDriverLicenseImageURL" height="200px" width="270px" />
+      </div> -->
+    </div>
+ 
+
+    <div class="">
+
+
+
+<!-- Modal -->
+<div style="width: 600px; height: 600px; margin: auto;" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+   
+      <webcam style="height: 500px; width: 100%;"  [trigger]="webCamLogic.triggerObservable"
+      (imageCapture)="webCamLogic.handleCapturedImage($event)" [allowCameraSwitch]="webCamLogic.allowCameraSwitch"
+      [imageQuality]="1" (initError)="webCamLogic.handleInitError($event)">
+    </webcam>
+
+  
+      
+      <div class="modal-footer" style="height: 100px;">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- <div class="col-6">
+        <webcam [height]="200" [width]="300" [trigger]="webCamLogic.triggerObservable"
+          (imageCapture)="webCamLogic.handleCapturedImage($event)" [allowCameraSwitch]="webCamLogic.allowCameraSwitch"
+          [imageQuality]="1" (initError)="webCamLogic.handleInitError($event)">
+        </webcam>
+      </div> -->
+      <div class=" p-0 col-12 mb-3">
+        <img *ngIf="webCamLogic.showCapturedImage" [src]="webCamLogic.selectedOrCapturedDriverLicenseImageURL"
+          height="200px" width="300px" />
+      </div>
+      <!-- <br /> -->
+      <div class="">
+        <button  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-raised btn-info" (click)="fileSelectInput.value = null; webCamLogic.triggerSnapshot()"
+        name="triggerIt">Capture</button>&nbsp; &nbsp;&nbsp; &nbsp;
+
+      <input #fileSelectInput type="file" name="file" accept=".jpg, .png" (change)="onFileSelected($event)"
+        (click)="fileSelectInput.value = null" value="" ng2FileSelect
+        [uploader]="this.fileUploadLogic.fileUploader" />&nbsp;
+      </div>
+     
+    </div>
+  </div>
+  </div>
+
+    <!-- <br> -->
+    <div class="form-group row justify-content-center my-3" >
+      <button type="submit" class="btn btn-raised btn-primary px-5" [disabled]="!driverDetailsFormGroup.valid"
+        (click)="onSave()">{{submitType}}</button>
+      &nbsp; &nbsp;
+      <button class="btn btn-raised btn-danger px-5" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,90 @@
+<!--Login Page Starts-->
+<section id="login"  style="    height: calc(100% - 24px);;">
+    <div class="container-fluid h-100">
+        <div class="row full-height-vh justify-content-center align-items-center h-100">
+            <div class="">
+                <!-- gradient-aqua-marine -->
+                <div class="card p-4 box-shadow-2 width-400">
+                    <div class="card-header text-center">
+                        <img src="assets/img/logos/logo.png" class="mb-3" width="150">
+                        <br>
+                        <br>
+                        <h4 class="text-uppercase text-bold-400 grey darken-1">Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                            <form [formGroup]="loginForm" (ngSubmit)="onSubmitButtonClick()" #formControl="ngForm">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input formControlName="username" type="username"
+                                            class="form-control form-control-lg" name="username" id="username"
+                                            [(ngModel)] = "this.loginData.username" placeholder="Username" required>
+                                        <div *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)">
+                                            <label *ngIf="f.username.errors">
+                                                <div class="text-danger"  *ngIf="f.username.errors.required">
+                                                    Username is required
+                                                </div>
+                                                <div class="text-danger"  *ngIf="f.username.errors.pattern">
+                                                    Entered text is invalid
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="password" formControlName="password"
+                                            class="form-control form-control-lg" name="inputPass" id="inputPass"
+                                            [(ngModel)] = "this.loginData.password" placeholder="Password" ngModel required>
+                                        <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                                            <label *ngIf="f.password.errors">
+                                                <div class="text-danger"  *ngIf="f.password.errors.required">
+                                                    Password is required
+                                                </div>
+                                                <div class="text-danger"  *ngIf="f.password.errors.minlength">
+                                                    Password should contain atleast 6 characters
+                                                </div>
+                                                <div class="text-danger" *ngIf="f.password.errors.pattern">
+                                                    Entered text is invalid
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0 ml-5">
+                                                <input type="checkbox" class="custom-control-input" checked
+                                                    id="rememberme">
+                                                <label class="custom-control-label float-left" for="rememberme">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <div class="form-group">
+                                    <div class="text-center col-md-12">
+                                        <button type="submit" [disabled]="!loginForm.valid"
+                                            class="btn btn-danger btn-raised px-4 py-2 text-uppercase white font-small-4 box-shadow-2 border-0"
+                                             (click)="onSubmitButtonClick()">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--[disabled]="!loginForm.valid" <div class="card-footer grey darken-1">
+                        <div class="text-center mb-1">Forgot Password? <a (click)="onForgotPassword()"><b>Reset</b></a>
+                        </div>
+                        <div class="text-center">Don't have an account? <a (click)="onRegister()"><b>Signup</b></a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Login Page Ends-->

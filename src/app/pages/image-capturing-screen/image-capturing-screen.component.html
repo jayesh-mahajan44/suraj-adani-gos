@@ -1,0 +1,88 @@
+<!-- <div class="container-fluid my-4"> -->
+<h3 class="text-center">Survey Images</h3>
+<br>
+<div class="modal" id="exampleModal"  >
+  <div class="modal-dialog modal-md">
+    <div class="modal-cont
+    ent">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Image Capture Dialog</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row"*ngFor="let photo of photos; let id = index">
+          <img  src={{photo}}
+            width="100%" />
+        </div>
+      </div>
+      <!-- Modal footer  *ngFor= "let captureImages of selectedOrCapturedDriverLicenseImageURL;let j = index;"-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- show-border -->
+<div *ngFor="let captureImageDto of captureImageDtoList; let i = index;">
+  <div class="row">
+    
+    <div class="col-4" style="font-size: 20px; text-align:end;">
+      {{captureImageDto?.label}}
+    </div>
+    <!-- <div class="col-1">:</div> -->
+    <div class="col-8 " style="font-size: 20px; text-align:first;">{{captureImageDto?.label}}</div>
+  </div>
+  <div class="row" style="justify-content: flex-end;">
+    <div class="col-4" style="margin-left: 2em;">
+      
+      <button class="btn btn-raised btn-info" data-toggle="modal" data-target="#exampleModal"
+        [attr.data-image-name]="captureImageDto.label" (click)="onViewButtonClick($event,i)" style="width:6em;"
+        type="button">View
+      </button>
+    </div>
+    <div class="col-4 ">
+      <div class="row">
+        <div class="col-6">
+          <webcam [height]="150" [width]="150" [trigger]="triggerObservable"
+            (imageCapture)="handleCapturedImage($event,i,captureImageDto)" [allowCameraSwitch]="allowCameraSwitch" [imageQuality]="1"
+            (initError)="handleInitError($event)">
+          </webcam>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-raised btn-info" [attr.data-image-name]="captureImageDto.label"
+            (click)="onCaptureButtonClick($event);triggerSnapshot()" style="width:6em;" type="button">Capture</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<br>
+<div class="row" style="justify-content: center">
+  <button type="button" class="btn btn-raised btn-danger">Close</button>
+</div>
+
+<!-- <webcam class="show-border" [height]="250" [width]="250" [trigger]="triggerObservable"
+  (imageCapture)="handleCapturedImage($event)" [allowCameraSwitch]="allowCameraSwitch" [imageQuality]="1"
+  (initError)="handleInitError($event)">
+</webcam> -->
+<!-- </div> -->
+<!-- <div>
+  <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="180">
+</div>
+<input type="file" multiple (change)="detectFiles($event)"> -->
+
+<!-- <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+            [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+            [videoOptions]="videoOptions"
+            [imageQuality]="1"
+            (cameraSwitched)="cameraWasSwitched($event)"
+            (initError)="handleInitError($event)"
+    ></webcam> -->
+
+    <div class="row" *ngFor="let captureImageDto of captureImageDtoList;">
+      <img  src={{captureImageDto.imageByteArray}}
+        width="100%" />
+    </div>

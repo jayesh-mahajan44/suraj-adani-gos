@@ -1,0 +1,81 @@
+//  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+.abc {
+
+  max-width: 42%;
+}
+.contaninerSizeCount{
+  max-width: 40%;
+}
+.importDpd button {
+  position: absolute;
+  top: -9%;
+  right: 0%;
+  font-size: small;
+}
+.summarySubmitButton{
+  position: relative;
+    top: 0;
+    right: 17px;
+    left: 36%;
+
+}
+.importBestPick button{
+  position: absolute;
+top: -8%;
+right: 5%;
+font-size: small;
+}
+
+// .formLevel{
+//   display: inline-flex;
+// }
+.col-sm-5.col-form-label {
+// text-align: right;
+
+padding-right: 0;
+}
+.importDpd {
+background: #fff;
+box-shadow: 1px 1px 3px 1px #9c9a9a;
+max-width: 350px;
+max-height: auto;
+padding: 11px;
+border-radius: 0;
+border: 0;
+
+}
+h4{
+  font-weight: 700;
+}
+form{
+box-sizing: border-box;
+} 
+input{
+box-sizing: border-box;
+width: 100%;
+}
+//----------------screen resolution---------------------
+@media only screen and (max-width: 800px) {
+/* For mobile phones: */
+.abc {
+
+max-width: 100%;
+
+}
+.contaninerSizeCount{
+max-width: 40%;
+
+
+}
+h4{
+  font-weight: 300;
+}
+h1 {
+  font-size: 25px;
+  font-weight: bold;
+}
+.importDpd{
+  margin: auto;
+}
+
+}

@@ -1,0 +1,21 @@
+[
+    {
+      "truckNumber":"ABCD235",
+      "containerNo": "ZCFHYO756842",
+      "isoCode": 4510,
+      "containerSeal1": 961833,
+      "containerSeal2": 12185321,
+      "typeOfOperation": "EXPORT",
+      "containerLocation": "CY33G6.M"
+    },
+    { 
+      "truckNumber":"ABCD235",
+      "containerNo": "ABFHYO756582",
+      "IsoCode": 2210,
+      "containerSeal1": 789833,
+      "containerSeal2": 56485321,
+      "typeOfOperation": "IMPORT",
+      "containerLocation": "BY33G7.C"
+    }
+  ]
+ 

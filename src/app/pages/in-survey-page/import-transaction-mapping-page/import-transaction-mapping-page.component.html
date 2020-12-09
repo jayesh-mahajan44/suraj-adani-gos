@@ -1,0 +1,325 @@
+<ngx-spinner
+  bdColor="rgba(51, 51, 51, 0.8)"
+  size="medium"
+  color="#dd8f44"
+  type="line-scale-pulse-out-rapid"
+>
+</ngx-spinner>
+
+<div class="container">
+  <h1 class="col-12 page-heading">Import Transaction Mapping</h1>
+  <!-- <br /> -->
+  <div class="row justify-content-center">
+    <form
+      [formGroup]="ImportFormGroup"
+    class="col-7"
+      #formControl="ngForm"
+    >
+      <fieldset [disabled]="isFormElementsToBeDisabled">
+        <div class="form-group row">
+          <div class="form-check col-6 text-center ">
+            <label class="form-check-label">
+              <!-- formControlName="importTransactionCategoryRadioBtn" -->
+              <!-- [(ngModel)]="selectedImportTransactionCategory" -->
+              <input
+                type="radio"
+                style="transform: scale(1.5)"
+                (change)="importTransactionCategoryRadioButtonChanged()"
+                name="importTransactionCategoryRadioBtn"
+                class="form-check-input"
+               
+                [value]="1"
+                formControlName="importTransactionCategoryRadioBtn"
+              />Best Pick
+            </label>
+            <!-- <label class="form-check-label" > -->
+            <!-- formControlName="importTransactionCategoryRadioBtn" -->
+            <!-- [(ngModel)]="selectedImportTransactionCategory" -->
+            <!-- <input type="radio" style="transform: scale(1.5);"
+                (change)="importTransactionCategoryRadioButtonChanged($event)" name="importTransactionCategoryRadioBtn"
+                formControlName="importTransactionCategoryRadioBtn" class="form-check-input" 
+               [value]="1" >Best Pick 1
+            </label>  -->
+          </div>
+          <div class="form-check col-6 text-center">
+            <label class="form-check-label">
+              <!-- formControlName="importTransactionCategoryRadioBtn" -->
+              <!-- [(ngModel)]="selectedImportTransactionCategory" -->
+              <input
+                type="radio"
+                style="transform: scale(1.5)"
+                (change)="importTransactionCategoryRadioButtonChanged()"
+                name="importTransactionCategoryRadioBtn"
+                class="form-check-input"
+                [value]="2"
+              
+                formControlName="importTransactionCategoryRadioBtn"
+              />DPD
+            </label>
+          </div>
+        </div>
+        <!-- *ngIf="bestPickHide" -->
+        <ng-container>
+          <div class="form-group row" >
+            <!-- [disabled] = "isContainerCountToBeDisabled" -->
+            <div class="col-6">No. of Containers</div>
+            <div class="form-check col-3 transform">
+              <label class="form-check-label">
+                <!-- [(ngModel)]="selectedContainerCount" -->
+                <input
+                  type="radio"
+                  formControlName="containerCountRadioBtn"
+                  name="containerCountRadioBtn"
+                  class="form-check-input"
+                  (change)="containerCountRadioButtonChanged()"
+                  [value]="1"
+                />1
+              </label>
+            </div>
+            <div class="form-check col-3 transform">
+              <label class="form-check-label">
+                <!-- [(ngModel)]="selectedContainerCount" -->
+                <input
+                  type="radio"
+                  formControlName="containerCountRadioBtn"
+                  name="containerCountRadioBtn"
+                  class="form-check-input"
+                  (change)="containerCountRadioButtonChanged()"
+                  [value]="2"
+                />2
+              </label>
+            </div>
+          </div>
+          <div class="form-group row" >
+            <div class="col-6">Container Size</div>
+            <!-- <div class="form-check col-3">
+            <label class="form-check-label"> -->
+            <!-- [(ngModel)]="selectedContainerSize" formControlName="containerSizeRadioBtn" -->
+            <!-- <input type="radio" name="containerSizeRadioBtn"
+                class="form-check-input" (click)="containerSizeRadioButtonChanged($event)" [value]="20" formControlName="containerSizeRadioBtn">20FT
+            </label>
+          </div> -->
+            <div class="form-check col-3 transform">
+              <label class="form-check-label">
+                <!-- [(ngModel)]="selectedContainerCount" -->
+                <input
+                  type="radio"
+                  formControlName="containerSizeRadioBtn"
+                  name="containerSizeRadioBtn"
+                  class="form-check-input"
+                  (change)="containerSizeRadioButtonChanged($event)"
+                  [value]="20"
+                />20FT
+              </label>
+            </div>
+            <div class="form-check col-3 transform"  >
+              <label class="form-check-label">
+                <!-- [(ngModel)]="selectedContainerSize" -->
+                <input
+                  type="radio"
+                  name="containerSizeRadioBtn"
+                  class="form-check-input"
+                  (change)="containerSizeRadioButtonChanged($event)"
+                  [value]="40"
+                  formControlName="containerSizeRadioBtn"
+                />40FT
+              </label>
+            </div>
+          </div>
+
+          <!-- <form [formGroup]="BestPickFormGroup" style="width: 100%" #formControl="ngForm"> -->
+          <!-- <fieldset [disabled]="isBestPickFo   rmToBeDisabled"> -->
+
+          <div class="form-group row" *ngIf="bestPic">
+            <div class="col-12 position-relative">
+              <label for="transporterCode">Transporter Code:</label>
+              <input
+                type="text"
+                (blur)="onTransporterCodeLostFocus()"
+                (input)="onTransporterCodeTextChanged()"
+                class="form-control"
+                id="transporterCode"
+                formControlName="transporterCode"
+                placeholder="Enter Transporter Code"
+                name="transporterCode"
+              />
+              <div class=" position-absolute" style="top:15px; right: 30px;" data-toggle="tooltip" *ngIf = 'importFormControls.transporterCode.invalid && (importFormControls.transporterCode.touched || importFormControls.transporterCode.dirty )' >
+                <br>
+                <fa-icon id="transporterCodeIcon" name="transporterCodeIcon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+
+            </div>
+            <!-- <div class="col-2">
+              <br />
+              <fa-icon
+                id="transporterCodeIcon"
+                name="transporterCodeIcon"
+                style="color: red"
+                size="lg"
+                [icon]="['fas', 'exclamation-circle']"
+              ></fa-icon>
+            </div> -->
+          </div>
+        </ng-container>
+
+        <!-- <div class="row" style="justify-content:center">
+        <button [disabled]="!BestPickFormGroup.valid" (click)="OnBestPickFormSubmitButtonClick()"
+          class="btn btn-raised btn-primary">Submit</button>
+      </div> -->
+        <!-- <hr style="border-style: solid; border-color:darkgray;"> -->
+        <!-- </fieldset> -->
+        <!-- </form> -->
+
+        <!-- <form [formGroup]="DPDFormGroup" style="width: 100%" #formControl="ngForm"> -->
+        <!-- <fieldset [disabled]="isDPDFormToBeDisabled">  *ngIf="dpdHide"-->
+        <ng-container>
+          <div class="form-group row" *ngIf="dpd">
+            <div class="col-12 position-relative">
+              <label for="dpdCode1">DPD Code:</label>
+              <input
+                type="text"
+                class="form-control"
+                autocomplete="off"
+                id="dpdCode1"
+                formControlName="dpdCode1"
+                (blur)="onDPDCode1LostFocus()"
+                (input)="onDPDCode1TextChanged()"
+                placeholder="Enter DPD Code 1"
+                name="dpdCode1"
+              />
+
+              <div class=" position-absolute" style="top:15px; right: 30px;" data-toggle="tooltip"  *ngIf = 'importFormControls.dpdCode1.invalid && (importFormControls.dpdCode1.touched || importFormControls.dpdCode1.dirty )'  >
+                <br>
+                <fa-icon id="dpdCode1Icon" name="dpdCode1Icon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+            </div>
+            <!-- <div class="col-2">
+              <br />
+              <fa-icon
+                id="dpdCode1Icon"
+                name="dpdCode1Icon"
+                style="color: red"
+                size="lg"
+                [icon]="['fas', 'exclamation-circle']"
+              >
+              </fa-icon>
+            </div> -->
+          </div>
+          <div class="form-group row" *ngIf="dpd && container2">
+            <div class="col-12 position-relative">
+              <!-- <label for="dpdCode">DPD Code 2:</label> -->
+              <input
+                type="text"
+                class="form-control"
+                id="dpdCode2"
+                autocomplete="off"
+                formControlName="dpdCode2"
+                (blur)="onDPDCode2LostFocus()"
+                (input)="onDPDCode2TextChanged()"
+                placeholder="Enter DPD Code 2"
+                name="dpdCode2"
+              />
+            <div class=" position-absolute" style="top:-17px; right: 30px;" data-toggle="tooltip"  *ngIf = 'importFormControls.dpdCode2.invalid && (importFormControls.dpdCode2.touched || importFormControls.dpdCode2.dirty )' >
+                <br>
+                <fa-icon id="dpdCode2Icon" name="dpdCode2Icon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+
+            </div>
+            <!-- <div class="col-2">
+              <<br>
+              <fa-icon
+                id="dpdCode2Icon"
+                name="dpdCode2Icon"
+                style="color: red"
+                size="lg"
+                [icon]="['fas', 'exclamation-circle']"
+              >
+              </fa-icon>
+            </div> -->
+          </div>
+          <div class="form-group row" *ngIf="dpd">
+            <div class="col-12 position-relative">
+              <label for="containerNo1">Container No: </label>
+              <input
+                type="text"
+                class="form-control"
+                id="containerNo1"
+                formControlName="containerNo1"
+                (blur)="onContainerNo1LostFocus()"
+                (input)="onContainerNo1TextChanged()"
+                placeholder="Enter Container No 1"
+                autocomplete="off"
+                name="containerNo1"
+              />
+              <div class=" position-absolute" style="top:15px; right: 30px;" data-toggle="tooltip"  *ngIf = 'importFormControls.containerNo1.invalid && (importFormControls.containerNo1.touched || importFormControls.containerNo1.dirty )' >
+                <br>
+                <fa-icon id="containerNo1Icon" name="containerNo1Icon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+
+            </div>
+            <!-- <div class="col-2">
+              <br />
+              <fa-icon
+                id="containerNo1Icon"
+                name="containerNo1Icon"
+                style="color: red"
+                size="lg"
+                [icon]="['fas', 'exclamation-circle']"
+              >
+              </fa-icon>
+            </div> -->
+          </div>
+
+          <div class="form-group row" *ngIf="dpd && container2">
+            <div class="col-12 position-relative">
+              <!-- <label for="containerNo">Container No 2:</label> -->
+              <input
+                type="text"
+                class="form-control"
+                autocomplete="off"
+                id="containerNo2"
+                formControlName="containerNo2"
+                (blur)="onContainerNo2LostFocus()"
+                (input)="onContainerNo2TextChanged()"
+                placeholder="Enter Container No 2"
+                name="containerNo2"
+              />
+  <div class=" position-absolute" style="top:-17px; right: 30px;" data-toggle="tooltip"  *ngIf = 'importFormControls.containerNo2.invalid && (importFormControls.containerNo2.touched || importFormControls.containerNo2.dirty )' >
+                <br>
+                <fa-icon id="containerNo2Icon" name="containerNo2Icon" style="color: red" size="lg"
+                  [icon]="['fas', 'exclamation-circle']"></fa-icon>
+              </div>
+
+            </div>
+            <!-- <div class="col-2">
+              <br>
+              <fa-icon
+                id="containerNo2Icon"
+                name="containerNo2Icon"
+                style="color: red"
+                size="lg"
+                [icon]="['fas', 'exclamation-circle']"
+              >
+              </fa-icon>
+            </div> -->
+          </div>
+        </ng-container>
+        <!-- </fieldset> -->
+        <!-- </form> -->
+        <div class="row" style="justify-content: center">
+          <button
+            [disabled]="!ImportFormGroup.valid"
+            (click)="onSubmitButtonClick()"
+            class="btn btn-raised btn-primary"
+          >
+            Submit
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

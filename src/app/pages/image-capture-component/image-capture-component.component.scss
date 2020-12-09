@@ -1,0 +1,65 @@
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+.inner
+{
+    display: inline-block;
+}
+
+.buttonStyle{
+  // display:grid;
+  // place-content: center;
+  position: absolute;
+    top: 141px;
+    right: 0px;
+}
+@media screen and (max-width: 600px) { // this is the 768px breakpoint
+  .modal-dialog {
+      max-width: 450px;
+      width: auto;
+
+  }
+
+  .buttonStyle{
+    // display:grid;
+    // place-content: center;
+    position: none !important;
+     
+  }
+  select{
+
+    width: 94%;
+  }
+ 
+  .btn{
+
+    font-size: 12px;
+  }
+ 
+ 
+
+  
+
+  .captureImage img{
+    max-width: 100px;
+  }
+  .captureImage p {
+    font-size: smaller;
+  }
+  .captureImagesP{
+
+    font-size: small;
+    margin-top: 14px;
+  }
+
+  .webCameraStyle{
+
+    margin-top: 8px;
+ 
+  }
+}
+
+
+  

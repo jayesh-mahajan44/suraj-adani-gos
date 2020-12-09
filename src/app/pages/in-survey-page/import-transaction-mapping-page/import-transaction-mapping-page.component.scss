@@ -1,0 +1,11 @@
+@import "../../../../assets/styles/rfs.scss";
+
+.page-heading {
+    // @include font-size(1.5rem);
+    text-align: center;
+    padding-bottom: 16px;
+}
+
+.transform{
+    transform: translateX(40%);
+}
